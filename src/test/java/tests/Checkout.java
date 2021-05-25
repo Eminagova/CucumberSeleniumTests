@@ -49,8 +49,6 @@ public class Checkout {
 		objShippingOption= PageFactory.initElements(driver,ShippingOption.class);
 		objPaymentMethod= PageFactory.initElements(driver,PaymentMethod.class);
 		objCheckPayment= PageFactory.initElements(driver,CheckPayment.class);
-
-
 	}
 
 	@After
@@ -62,34 +60,43 @@ public class Checkout {
 	public void checkoutByCheck() throws InterruptedException {
 		addItemToCart();
 		objItem.clickWomen1Link();
+		
 		objWomen.verifyPageLoaded();
 		objWomen.clickBlouseLink();
+		
 		objItemPage2.verifyPageLoaded();
 		objItemPage2.clickAddToCartButton();
 		objItemPage2.clickProceedToCheckoutLink();
+		
 		objOrder.verifyPageLoaded();
 		objOrder.clickProceedToCheckout2Link();
+		
 		objShipping.verifyPageLoaded();
 		objShipping.clickProceedToCheckout2Button();
 		objShippingOption.setIAgreeToTheTermsOfCheckboxField();
 		objShippingOption.clickProceedToCheckout2Button();
-		objPaymentMethod.clickPayByCheckOrderProcessingLink();
-		objCheckPayment.clickIConfirmMyOrderButton();
 		
-		}
+		objPaymentMethod.clickPayByCheckOrderProcessingLink();
+		
+		objCheckPayment.clickIConfirmMyOrderButton();
+	}
 
 	@Test
 	public void checkoutByBank() throws InterruptedException {
-	addItemToCart();
-	objItemPage2.clickProceedToCheckoutLink();
-	objOrder.verifyPageLoaded();
-	objOrder.clickProceedToCheckout2Link();
-	objShipping.verifyPageLoaded();
-	objShipping.clickProceedToCheckout2Button();
-	objShippingOption.setIAgreeToTheTermsOfCheckboxField();
-	objShippingOption.clickProceedToCheckout2Button();
-	objPaymentMethod.clickPayByBankWireOrderLink();
-	objCheckPayment.clickIConfirmMyOrderButton();
+		addItemToCart();
+		objItemPage2.clickProceedToCheckoutLink();
+		
+		objOrder.verifyPageLoaded();
+		objOrder.clickProceedToCheckout2Link();
+		
+		objShipping.verifyPageLoaded();
+		objShipping.clickProceedToCheckout2Button();
+		objShippingOption.setIAgreeToTheTermsOfCheckboxField();
+		objShippingOption.clickProceedToCheckout2Button();
+		
+		objPaymentMethod.clickPayByBankWireOrderLink();
+		
+		objCheckPayment.clickIConfirmMyOrderButton();
 	}
 	
 	private void addItemToCart() {
@@ -98,14 +105,15 @@ public class Checkout {
 		objAuthentication.setEmailAddress2TextField("marija@nekoj.com");
 		objAuthentication.setPasswordPasswordField("1234567890");
 		objAuthentication.clickSignIn2Button();
+		
 		objMyAccount.verifyPageLoaded();
 		objMyAccount.clickWomen1Link();
+		
 		objWomen.verifyPageLoaded();
 		objWomen.clickFadedShortSleeveTshirtsLink();
+		
 		objItem.verifyPageLoaded();
 		objItem.clickAddToCartButton();
-	
 	}
-	
-	
-	}
+		
+}
